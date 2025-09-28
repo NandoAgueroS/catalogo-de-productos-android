@@ -40,7 +40,7 @@ public class CargarViewModel extends AndroidViewModel {
 
         if (valido){
             listaProductos.add(new Producto(codigo, descripcion, Double.parseDouble(precio)));
-            mMensaje.setValue("Creado correctamente");
+            mMensaje.setValue("Producto " + descripcion + " guardado correctamente");
         }
     }
 

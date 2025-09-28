@@ -30,15 +30,17 @@ public class CargarFragment extends Fragment {
         cargarViewModel.getMMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+                binding.tvMensaje.setText(s);
                 binding.etPrecio.setText("");
                 binding.etDescripcion.setText("");
                 binding.etCodigo.setText("");
+                binding.tvError.setText("");
             }
         });
         cargarViewModel.getMError().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
+                binding.tvMensaje.setText("");
                 binding.tvError.setText(s);
             }
         });
@@ -50,7 +52,6 @@ public class CargarFragment extends Fragment {
                 String descripcion = binding.etDescripcion.getText().toString();
                 String precio = binding.etPrecio.getText().toString();
                 cargarViewModel.cargarProducto(codigo, descripcion, precio);
-
             }
         });
 

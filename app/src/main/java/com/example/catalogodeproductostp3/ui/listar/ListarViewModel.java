@@ -39,7 +39,7 @@ public class ListarViewModel extends ViewModel {
             listaProductos.sort(new Comparator<Producto>() {
                 @Override
                 public int compare(Producto o1, Producto o2) {
-                    return o1.getDescripcion().compareTo(o2.getDescripcion());
+                    return o1.getDescripcion().compareToIgnoreCase(o2.getDescripcion());
                 }
             });
             mProductos.setValue(listaProductos);

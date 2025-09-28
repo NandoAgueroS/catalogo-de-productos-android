@@ -15,6 +15,7 @@ import java.util.Comparator;
 public class ListarViewModel extends ViewModel {
 
     private MutableLiveData<ArrayList<Producto>> mProductos;
+    private MutableLiveData<String> mMensaje;
 
 
     public LiveData<ArrayList<Producto>> getMProducto() {
@@ -24,13 +25,24 @@ public class ListarViewModel extends ViewModel {
         return mProductos;
     }
 
+    public LiveData<String> getMMensaje() {
+        if (mMensaje== null) {
+            mMensaje= new MutableLiveData<>();
+        }
+        return mMensaje;
+    }
+
     public void listarProductos(){
-        listaProductos.sort(new Comparator<Producto>() {
-            @Override
-            public int compare(Producto o1, Producto o2) {
-                return o1.getDescripcion().compareTo(o2.getDescripcion());
-            }
-        });
-        mProductos.setValue(listaProductos);
+        if (listaProductos.isEmpty()){
+            mMensaje.setValue("No hay productos para mostrar");
+        }else{
+            listaProductos.sort(new Comparator<Producto>() {
+                @Override
+                public int compare(Producto o1, Producto o2) {
+                    return o1.getDescripcion().compareTo(o2.getDescripcion());
+                }
+            });
+            mProductos.setValue(listaProductos);
+        }
     }
 }

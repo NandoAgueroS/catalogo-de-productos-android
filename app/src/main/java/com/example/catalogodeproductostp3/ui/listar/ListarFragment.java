@@ -30,9 +30,16 @@ public class ListarFragment extends Fragment {
 
         View root = binding.getRoot();
 
+        mv.getMMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.tvListado.setText(s);
+            }
+        });
         mv.getMProducto().observe(getViewLifecycleOwner(), new Observer<ArrayList<Producto>>() {
             @Override
             public void onChanged(ArrayList<Producto> productos) {
+                binding.tvListado.setText("Listado de productos");
                 ProductoAdapter adapter = new ProductoAdapter(productos, getContext(), getLayoutInflater());
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
                 binding.recyclerView.setLayoutManager(gridLayoutManager);

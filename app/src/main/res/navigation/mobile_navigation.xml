@@ -10,7 +10,24 @@
         android:name="com.example.catalogodeproductostp3.ui.listar.ListarFragment"
         android:label="@string/listar"
         tools:layout="@layout/fragment_listar" />
-
+    <fragment
+        android:id="@+id/nav_busqueda"
+        android:name="com.example.catalogodeproductostp3.ui.busqueda.BusquedaFragment"
+        android:label="@string/busqueda"
+        tools:layout="@layout/fragment_busqueda" >
+        <action
+            android:id="@+id/action_nav_busqueda_to_nav_detalle2"
+            app:destination="@id/nav_detalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detalle"
+        android:name="com.example.catalogodeproductostp3.ui.busqueda.DetalleDelProductoFragment"
+        android:label="@string/detalle_del_producto"
+        tools:layout="@layout/fragment_detalle_del_producto" >
+        <action
+            android:id="@+id/action_nav_detalle_to_nav_busqueda2"
+            app:destination="@id/nav_busqueda" />
+    </fragment>
     <fragment
         android:id="@+id/nav_cargar"
         android:name="com.example.catalogodeproductostp3.ui.cargar.CargarFragment"

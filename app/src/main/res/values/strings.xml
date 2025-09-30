@@ -13,4 +13,6 @@
     <string name="cargar">Cargar</string>
     <string name="listar">Listar</string>
     <string name="salir">Salir</string>
+    <string name="busqueda">Búsqueda</string>
+    <string name="detalle_del_producto">Detalle del producto</string>
 </resources>
